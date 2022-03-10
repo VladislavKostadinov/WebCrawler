@@ -42,6 +42,7 @@ def start_process(self):
         print(len(Main_Tab.books_sample))
         print(actions_s)
         print(actions_f)
+        print(actions_s)
         return Main_Tab.books_sample[0][0]
 
 

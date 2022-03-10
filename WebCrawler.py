@@ -175,6 +175,7 @@ class MainScraper(QWidget):
                 pixmap = QPixmap(path)
                 image.setPixmap(pixmap.scaled(152, 152, Qt.KeepAspectRatioByExpanding, Qt.SmoothTransformation))
 
+
                 return image
         except FileNotFoundError:
             print("File not found.")
