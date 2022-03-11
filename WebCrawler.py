@@ -77,7 +77,6 @@ second_book_urls = []
 
 
 book_info = ['book_title', 'book_author', 'book_pages', 'book_price']
-book_info = ['book_title', 'book_author', 'book_pages', 'book_price']
 book_info_df_main = pd.DataFrame(None, columns=book_info)
 
 
@@ -150,7 +149,7 @@ class MainScraper(QWidget):
         activity_box.addWidget(status_box)
         self.status.setLayout(activity_box)
 
-        scrape_info = QLabel("Web Crawler Main Window")
+        # scrape_info = QLabel("Web Crawler Main Window")
 
         web_view = QWebEngineView()
         web_view.show()
@@ -176,6 +175,7 @@ class MainScraper(QWidget):
                 image.setPixmap(pixmap.scaled(152, 152, Qt.KeepAspectRatioByExpanding, Qt.SmoothTransformation))
 
                 return image
+
         except FileNotFoundError:
             print("File not found.")
 
@@ -183,6 +183,7 @@ class MainScraper(QWidget):
         self.book_info_df = pd.DataFrame(None, columns=book_info)
 
         self.state = QWidget()
+
         crawler_a = QLabel("Current activity: ")
         self.craw_mess = QLabel("Idle")
         self.craw_mess.setObjectName('indigo')
@@ -190,6 +191,7 @@ class MainScraper(QWidget):
         img_sec_p = 'images/sps.png'
         img_sec_ = self.load_img(img_sec_p)
         img_sec_.setObjectName('weby')
+
         state_box = QWidget()
 
         scrape_state = QLabel("Status: ")
@@ -232,6 +234,7 @@ class MainScraper(QWidget):
         self.save_to.clicked.connect(lambda: Collect_Tab.save_file(self))
 
         buttons = QWidget()
+
         processes = QHBoxLayout(self)
         processes.addWidget(self.loader)
         processes.addWidget(self.next_page)
@@ -248,6 +251,7 @@ class MainScraper(QWidget):
 
     def browse(self):
         status = QWidget()
+
         title = QLabel("Browse the collected data")
         title.setObjectName('Title')
 
@@ -256,6 +260,7 @@ class MainScraper(QWidget):
         img_third_.setObjectName('trd')
 
         state_box = QWidget()
+
         author = QLabel("APP created by: ")
         self.credentials = QLabel("Vladislav Kostadinov")
         total = QLabel("Total collected items: ")
@@ -284,14 +289,16 @@ class MainScraper(QWidget):
 
         self.book_title = QLabel("Search a book by title")
         self.book_title.setAlignment(Qt.AlignCenter)
+        self.book_title.setFont(QFont("Verdana", 15))
 
         search_menu = QWidget()
+
         self.book_name = QLineEdit(self)
-        self.book_title.setFont(QFont("Verdana", 15))
         self.search_eng = QPushButton("Search")
         self.search_eng.clicked.connect(lambda: Browse_Tab.searching(self))
 
         e_kets = QWidget()
+
         book_ttl = QLabel("Title: ")
         book_ttl.setFont(QFont("Verdana", 7))
         book_auth = QLabel("Author: ")
@@ -318,6 +325,7 @@ class MainScraper(QWidget):
         self.book_pages_e.setObjectName('entry')
 
         greet = QWidget()
+
         grettings = QHBoxLayout()
         grettings.addWidget(self.book_title)
         greet.setLayout(grettings)
@@ -327,10 +335,6 @@ class MainScraper(QWidget):
         search_active.addWidget(self.book_name)
         search_active.addWidget(self.search_eng)
         search_menu.setLayout(search_active)
-
-        search_engine = QVBoxLayout()
-        search_engine.addWidget(search_menu, Qt.AlignCenter)
-        search_menu.setLayout(search_engine)
 
         b_title = QWidget()
         titles = QHBoxLayout()
@@ -358,7 +362,6 @@ class MainScraper(QWidget):
         prices.addWidget(book_price)
         prices.addWidget(self.book_price_e)
         b_prices.setLayout(prices)
-        # b_prices.setObjectName('cross')
 
         book_preview = QVBoxLayout()
         book_preview.addWidget(b_title)
@@ -374,15 +377,9 @@ class MainScraper(QWidget):
         welcome.addWidget(search_menu)
         main_title.setLayout(welcome)
 
-        main_body = QWidget()
-        page_body = QHBoxLayout()
-        page_body.addWidget(e_kets, Qt.AlignCenter)
-        main_body.setLayout(page_body)
-
         ind = QWidget()
         complete_banner = QHBoxLayout()
         complete_banner.addWidget(status)
-        complete_banner.addWidget(state_box)
         ind.setLayout(complete_banner)
         ind.setObjectName('banner')
 
@@ -390,7 +387,7 @@ class MainScraper(QWidget):
         complete_body = QVBoxLayout()
         complete_body.addWidget(main_title)
         complete_body.addStretch()
-        complete_body.addWidget(main_body, Qt.AlignCenter)
+        complete_body.addWidget(e_kets, Qt.AlignCenter)
         body.setLayout(complete_body)
         body.setObjectName('search_body')
 
@@ -401,7 +398,7 @@ class MainScraper(QWidget):
         self.catalogue.setLayout(complete_all)
 
     def mandatory_s(self):
-        self.craw_act.setText('Re   ady')
+        self.craw_act.setText('Ready')
         self.display_status.setText('Data acquired')
         self.craw_act.setObjectName('tez')
         self.display_status.setObjectName('green')
@@ -409,8 +406,10 @@ class MainScraper(QWidget):
         self.display_status.style().unpolish(self.display_status)
         self.collection.setText(str(len(Main_Tab.books_sample[0])))
 
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setStyleSheet(style_sheets)
     window = MainScraper()
     sys.exit(app.exec_())
+
