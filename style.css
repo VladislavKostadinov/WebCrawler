@@ -1,0 +1,55 @@
+    QWidget#Status {
+    border: 1px solid black;
+    }
+
+    QWidget#Coll {
+    border: 1px solid blue;
+    background-color: beige;
+    }
+    QFrame#Line {
+    color: blue; }
+    #weby {
+  }
+  QWidget#banner {
+  border-bottom: 1px dotted black;
+
+  }
+  QWidget#eti {
+  border: 1px solid black;
+  }
+  QWidget#cross{
+  border-bottom: 1px solid burlywood;
+  }
+
+  QLabel#Title {
+  color: blue; }
+
+  QLabel#green{
+  color: green;
+  }
+  QLabel#red {
+  color: red;
+  }
+  QLabel#tez {
+  color: blue; }
+  QLabel#complete {
+  color: green; }
+
+  QWidget#tab1 {
+  background-color: lightgray; }
+
+    QWidget#tab2 {
+  background-color: lightblue; }
+
+    QWidget#tab3 {
+  background-color: burlywood; }
+
+  QLabel#entry {
+  color: blue; }
+
+  QWidget#ind {
+  background-color: beige;
+   border: 1px solid blue; }
+
+   QWidget#search_body {
+   background-color: beige; }

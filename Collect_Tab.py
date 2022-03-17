@@ -23,8 +23,8 @@ scrape_btn = []
 counter = []
 collectibles = []
 book_info = ['book_title', 'book_author', 'book_pages', 'book_price']
-book_info = ['book_title', 'book_author', 'book_pages', 'book_price']
 book_info_df_main = pd.DataFrame(None, columns=book_info)
+
 
 def start_process(self):
     actions_f.append('Action')
@@ -39,10 +39,10 @@ def start_process(self):
         return Main_Tab.books_sample[0][0]
     else:
         forward_btn.append(Main_Tab.books_sample)
-        print(len(Main_Tab.books_sample))
-        print(actions_s)
-        print(actions_f)
-        print(actions_s)
+        # print(len(Main_Tab.books_sample))
+        # print(actions_s)
+        # print(actions_f)
+        # print(actions_s)
         return Main_Tab.books_sample[0][0]
 
 
