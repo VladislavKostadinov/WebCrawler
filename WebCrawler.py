@@ -1,23 +1,16 @@
-import re
 import sys
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtCore import Qt, QUrl
 from PyQt5.QtGui import QPixmap, QFont
-from PyQt5.QtWidgets import QWidget, QApplication, QTabWidget, QLabel, QHBoxLayout, QButtonGroup, QVBoxLayout, \
-    QRadioButton, QGroupBox, QPushButton, QGridLayout, QMessageBox, QCheckBox, QMainWindow, QFrame, QLineEdit
-import time
-from datetime import datetime
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
+from PyQt5.QtWidgets import QWidget, QApplication, QTabWidget, QLabel, QHBoxLayout, QVBoxLayout, \
+    QPushButton, QFrame, QLineEdit
 import pandas as pd
-import Main_Tab
-import Collect_Tab
-import Browse_Tab
+from final.lib import Browse_Tab, Main_Tab, Collect_Tab
+
 web_driver = r'../chromedriver/chromedriver.exe'
 
 
-with open('style.css', 'r') as s:
+with open('styles/style.css', 'r') as s:
     style_sheets = s.read()
 
 second_book_urls = []
