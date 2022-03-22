@@ -5,7 +5,7 @@ from PyQt5.QtGui import QPixmap, QFont
 from PyQt5.QtWidgets import QWidget, QApplication, QTabWidget, QLabel, QHBoxLayout, QVBoxLayout, \
     QPushButton, QFrame, QLineEdit
 import pandas as pd
-from final.lib import Browse_Tab, Main_Tab, Collect_Tab
+from final.fantasy_crawler import Browse_Tab, Main_Tab, Collect_Tab
 
 web_driver = r'../chromedriver/chromedriver.exe'
 
