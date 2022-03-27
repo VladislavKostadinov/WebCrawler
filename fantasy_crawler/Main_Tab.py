@@ -93,8 +93,8 @@ def scrape_url(self):
             QMessageBox.information(self, 'Main Window', 'Initial website scraped! Please continue.',
                                     QMessageBox.Ok,
                                     QMessageBox.Ok)
-            print(books_sample)
-            print(len(main_page_c))
+            # print(books_sample)
+            # print(len(main_page_c))
             tab_status.append('Ready')
             return books_sample
     else:

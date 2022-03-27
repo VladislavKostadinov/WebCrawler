@@ -42,7 +42,7 @@ def start_process(self):
                                                         'loaded!',
                                     QMessageBox.Ok, QMessageBox.Ok)
             if len(start_pr) > 0:
-                print(start_pr[0])
+                # print(start_pr[0])
 
                 return start_pr[0][0]
 
@@ -85,16 +85,16 @@ def forward_click(self):
                 QMessageBox.information(self, 'Scrape Box', 'No more pages to load', QMessageBox.Ok,
                                         QMessageBox.Ok)
                 return
-            print(actions_f)
+            # print(actions_f)
             return forward_btn[0][0][0]
         else:
             if len(scrape_btn) != len(start_pr):
                 QMessageBox.information(self, 'Scraper window', "Scrape page first!", QMessageBox.Ok,
                                         QMessageBox.Ok)
-                print(forward_btn[0][0][0])
+                # print(forward_btn[0][0][0])
                 return forward_btn[0][0][0]
             else:
-                print(forward_btn[0][0][0])
+                # print(forward_btn[0][0][0])
                 return forward_btn[0][0][0]
 
 
@@ -177,7 +177,7 @@ def scrape_segments(self):
                     QMessageBox.information(self, 'Scrape Box', 'Search finished, please carry on.', QMessageBox.Ok,
                                             QMessageBox.Ok)
                     return
-                print(actions_s)
+                # print(actions_s)
                 return self.book_info_df, mismatch
             else:
                 QMessageBox.information(self, 'Scrape Box', 'Please load next page first!', QMessageBox.Ok,
