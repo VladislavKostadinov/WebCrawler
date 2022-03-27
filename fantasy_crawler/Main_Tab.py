@@ -8,6 +8,16 @@ from final import FantasyCrawler
 main_page_c = []
 book_urls = []
 books_sample = []
+books_rep = []
+tab_status =  []
+
+# Using lists and variables to implement the functionality of the selenium web scraper tools. The application
+# will accept only one scrape process, triggered by a button (connected to a function). It will append an item to a
+# list and will check if the list is empty before scraping, else it will display a warning QMessageBox window. It will
+# collect links for fantasy books, published after the year 2015. It collects up 14 urls from a page, and triggers an
+#     button click event, which loads the next page. Variables provide the option to easily change the number of
+# pages browsed. Every page opened changes the variable numbers and uses 'if' logic and indexing to collect the novels.
+
 
 def scrape_url(self):
     p = 1
@@ -85,6 +95,7 @@ def scrape_url(self):
                                     QMessageBox.Ok)
             print(books_sample)
             print(len(main_page_c))
+            tab_status.append('Ready')
             return books_sample
     else:
         QMessageBox.information(self, 'Main Window', 'Please load the initial site!', QMessageBox.Ok,
@@ -96,7 +107,13 @@ def load_main(self):
     if len(main_page_c) == 0:
         main_page_c.append('Main')
         return 'https://www.bookdepository.com/category/355/Fantasy/browse/viewmode/all'
+
     else:
-        QMessageBox.information(self, 'Main Window', 'Initial site already loaded. Please scrape.',
-                                QMessageBox.Ok, QMessageBox.Ok)
-        return 'https://www.bookdepository.com/category/355/Fantasy/browse/viewmode/all'
+        if len(books_sample) > 0:
+            QMessageBox.information(self, 'Main Window', 'Initial website already scraped! Please continue.',
+                                    QMessageBox.Ok, QMessageBox.Ok)
+            return 'https://www.bookdepository.com/category/355/Fantasy/browse/viewmode/all'
+        else:
+            QMessageBox.information(self, 'Main Window', 'Initial site already loaded. Please scrape.',
+                                    QMessageBox.Ok, QMessageBox.Ok)
+            return 'https://www.bookdepository.com/category/355/Fantasy/browse/viewmode/all'

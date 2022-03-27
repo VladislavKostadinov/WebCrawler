@@ -14,32 +14,51 @@ actions_s = []
 scrape_btn = []
 counter = []
 collectibles = []
+start_pr = []
 book_info = ['book_title', 'book_author', 'book_pages', 'book_price']
 book_info_df_main = pd.DataFrame(None, columns=book_info)
 
 
+# Using lists as a main tool to implement the logical aspect of the functionality of the application. Every process,
+# triggered by a button click (connected to a function), appends or pops items from a corresponding list.
+# Functions check with logical 'if' operators for the len of the lists, return different values and trigger
+# QMessageBox pop-up windows, which output relevant information and coordination for the user. There is a functionality
+# to save the collected (scraped) data to a csv file for futher use.
+
 def start_process(self):
-    actions_f.append('Action')
-    beginning.append('Start')
-    if self.display_state.text() == '7/7':
-        QMessageBox.information(self, 'Scrape Box', 'Search finished, please carry on', QMessageBox.Ok,
-                                QMessageBox.Ok)
-        return
-    if len(forward_btn) > 0:
-        QMessageBox.information(self, 'Scrape Box', 'Process already started.', QMessageBox.Ok,
-                                QMessageBox.Ok)
-        return Main_Tab.books_sample[0][0]
+    # start_pr.append((Main_Tab.books_sample[0][0]))
+    if len(Main_Tab.tab_status) == 0:
+        QMessageBox.information(self, 'Crawler Info', 'Please scrape the main page (Scrape Tab) first to collect data!',
+                                QMessageBox.Ok, QMessageBox.Ok)
     else:
-        forward_btn.append(Main_Tab.books_sample)
-        # print(len(Main_Tab.books_sample))
-        # print(actions_s)
-        # print(actions_f)
-        # print(actions_s)
-        return Main_Tab.books_sample[0][0]
+        actions_f.append('Action')
+        beginning.append('Start')
+        if self.display_state.text() == '7/7':
+            QMessageBox.information(self, 'Scrape Box', 'Search finished, please carry on!', QMessageBox.Ok,
+                                    QMessageBox.Ok)
+            return
+        if len(forward_btn) > 0:
+            QMessageBox.information(self, 'Scrape Box', 'Process already started. Next page (if such) automatically '
+                                                        'loaded!',
+                                    QMessageBox.Ok, QMessageBox.Ok)
+            if len(start_pr) > 0:
+                print(start_pr[0])
+
+                return start_pr[0][0]
+
+            else:
+                return Main_Tab.books_sample[0][0]
+
+        else:
+            forward_btn.append(Main_Tab.books_sample)
+            # print(len(Main_Tab.books_sample))
+            # print(actions_s)
+            # print(actions_f)
+            # print(actions_s)
+            return Main_Tab.books_sample[0][0]
 
 
 def forward_click(self):
-
     if self.display_state.text() == '7/7':
         QMessageBox.information(self, 'Scrape Box', 'Search finished, please carry on', QMessageBox.Ok,
                                 QMessageBox.Ok)
@@ -58,7 +77,7 @@ def forward_click(self):
             try:
                 forward_btn[0][0].pop(0)
             except IndexError:
-                QMessageBox.information(self, 'Scrape Box', 'An error occured!', QMessageBox.Ok,
+                QMessageBox.information(self, 'Scrape Box', 'An error occurred!', QMessageBox.Ok,
                                         QMessageBox.Ok)
                 return
             if len(forward_btn[0]) == 0:
@@ -69,10 +88,14 @@ def forward_click(self):
             print(actions_f)
             return forward_btn[0][0][0]
         else:
-            QMessageBox.information(self, 'Scraper window', "Scrape page first!", QMessageBox.Ok,
-                                    QMessageBox.Ok)
-            print(forward_btn[0][0][0])
-            return forward_btn[0][0][0]
+            if len(scrape_btn) != len(start_pr):
+                QMessageBox.information(self, 'Scraper window', "Scrape page first!", QMessageBox.Ok,
+                                        QMessageBox.Ok)
+                print(forward_btn[0][0][0])
+                return forward_btn[0][0][0]
+            else:
+                print(forward_btn[0][0][0])
+                return forward_btn[0][0][0]
 
 
 def scrape_segments(self):
@@ -94,6 +117,7 @@ def scrape_segments(self):
 
                 title, author, pages, price = [], [], [], []
                 scrape_btn.append(Main_Tab.books_sample[0])
+                start_pr.append(Main_Tab.books_sample[0])
                 browser = webdriver.Chrome(FantasyCrawler.web_driver)
                 browser.maximize_window()
                 browser.implicitly_wait(10)

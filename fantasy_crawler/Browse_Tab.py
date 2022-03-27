@@ -15,6 +15,9 @@ from final import FantasyCrawler
 from final.fantasy_crawler import Main_Tab
 from final.fantasy_crawler import Browse_Tab
 
+# Browse the data, collected by the Scraper, using pandas.loc[] to find the correct row by title, containing the
+# book info and extract the chosen item() from the located row.
+
 
 def searching(self):
     if self.book_name.text() == '':

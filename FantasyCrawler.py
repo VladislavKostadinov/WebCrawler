@@ -8,6 +8,13 @@ import pandas as pd
 from final.fantasy_crawler import Browse_Tab, Main_Tab, Collect_Tab
 from backports import configparser
 
+# The crawler uses selenium to open a browser and collect data for fantasy novels. The PyQt GUI is build in this module
+# and a pandas Data Frame is used to collect the data. The GUI includes Qhorizontal and Qvertical layouts and a
+# QMessagebox touring system, which is triggered by the functional progress of the program. There are 3 separate tabs,
+# which include main scraping (for the books), secondary scraping (for individual book data) and search engine. The
+# second tab is limited to 7 books for sample testing.
+
+
 web_driver = r'../chromedriver/chromedriver.exe'
 
 
