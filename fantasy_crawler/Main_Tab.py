@@ -9,7 +9,7 @@ main_page_c = []
 book_urls = []
 books_sample = []
 books_rep = []
-tab_status =  []
+tab_status = []
 
 # Using lists and variables to implement the functionality of the selenium web scraper tools. The application
 # will accept only one scrape process, triggered by a button (connected to a function). It will append an item to a

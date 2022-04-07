@@ -72,7 +72,7 @@ def forward_click(self):
         return
         # actions_f.pop(0)
     else:
-        if len(actions_f) <= len(actions_s):
+        if len(actions_f) <= len(actions_s) and len(actions_s) > 0:
             actions_f.append('Action')
             try:
                 forward_btn[0][0].pop(0)
